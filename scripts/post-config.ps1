@@ -96,14 +96,12 @@
 
 # Download MSDocs Azure Stack Development Kit PDF
 
-    New-Item -Path 'C:\_GettingStarted' -ItemType Directory
-    DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "C:\_GettingStarted\MSDocs-ASDK-28FEB2020.pdf"
+    DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$env:ALLUSERSPROFILE\Desktop\MSDocs-ASDK-28FEB2020.pdf"
 
 
 # Download Getting Started Favorites File
 
-    New-Item -Path 'C:\_GettingStarted' -ItemType Directory
-    DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "C:\_GettingStarted\Getting_Started.html"
+    DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$env:ALLUSERSPROFILE\Desktop\Getting_Started.html"
 
 
 # Download and Extract Mobaxterm
@@ -197,7 +195,7 @@
             ## Download Windows Server 2019 Trial
             if ($ASDKConfiguratorParams.IsoPath2019)
             {
-                DownloadWithRetry -Uri https://software-download.microsoft.com/download/17763.253.190108-0006.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso -DownloadLocation $ASDKConfiguratorParams.IsoPath2019
+                DownloadWithRetry -Uri https://software-download.microsoft.com/download/17763.253.190108-0006.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso -DownloadLocation $ASDKConfiguratorParams.IsoPath2019
             }
 
             ## Download Windows Server 2016 Trial
