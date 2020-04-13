@@ -72,11 +72,11 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __Test Comments (Delete Prior to Delivery)__
  - Tester 01 (RK)
-  - 
+   - <Place test notes here>
  - Tester 02 (NP)
-  - 
+   - <Place test notes here>
  - Tester 03 (TF)
-  - 
+   - <Place test notes here>
   
 
 
