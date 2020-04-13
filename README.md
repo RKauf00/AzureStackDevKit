@@ -32,8 +32,8 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
     - [Azure US Government](https://aka.ms/AzureGov-AzStackPOC)
   - Log on to Azure VM (default username is _administrator_)
   - Run desktop shortcut 1_Install-ASDK as **administrator**
-    - Provide Azure Acccount details at Azure authentication prompt
-  - Log on to the server following the server restart
+    - When prompted; complete Azure AD authentication
+  - Following automatic restart; log on to the server
     - Account updates to use AzureStack domain account
     - Acount Name: _AzureStack\AzureStackAdmin_
     - Account Password: Same as _Administrator_ account
