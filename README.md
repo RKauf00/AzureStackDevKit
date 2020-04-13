@@ -51,6 +51,12 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
     - Provide Azure AD Account Password at prompt
 
 
+### __ISO Download URIs__
+
+ - [Windows Server 2019 (Evaluation)](https://software-download.microsoft.com/download/17763.253.190108-0006.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso)
+ - [Windows Server 2016 (Evaluation)](http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO)
+ - [Windows 10 Enterprise (Evaluation)](https://software-download.microsoft.com/download/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso)
+
 ### __Pending Checks, Tests, Updates__
 
  - Windows Server 2016 and Windows 10 eval ISO download timeout
