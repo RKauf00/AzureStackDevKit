@@ -51,6 +51,15 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
     - Provide Azure AD Account Password at prompt
 
 
+### __Pending Checks, Tests, Updates
+
+ - Verify 2016 Download URI issue was aberant behaviour
+   - Validated URI works
+   - Validate it works in deployment
+   - http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO
+ - Validate Windows 10 download process
+   - 
+
 ### __Example__
 
 `
