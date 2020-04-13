@@ -57,11 +57,11 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
   - Windows Server 2016 Eval ISO
     - Validated URI works
     - Need to validate it works in deployment
-    - http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO
+    - [Download URI](http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO)
   - Windows 10 Enterprise Eval ISO
     - Validated URI works
     - Need to validate it works in deployment
-    - https://software-download.microsoft.com/download/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
+    - [Download URI](https://software-download.microsoft.com/download/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso)
 
 
 ### __Example__
