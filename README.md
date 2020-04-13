@@ -53,12 +53,15 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __Pending Checks, Tests, Updates
 
- - Verify 2016 Download URI issue was aberant behaviour
-   - Validated URI works
-   - Validate it works in deployment
-   - http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO
- - Validate Windows 10 download process
-   - 
+ - Windows Server 2016 and Windows 10 eval ISO download timeout
+  - Windows Server 2016
+    - Validated URI works
+    - Need to validate it works in deployment
+    - http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO
+  - Windows 10
+    - Validated URI works
+    - Need to validate it works in deployment
+    - https://software-download.microsoft.com/download/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
 
 ### __Example__
 
