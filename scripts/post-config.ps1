@@ -380,7 +380,7 @@
         $SH = '974EC5E0CB73A298E6FB094EBAE71961462A6A13AEED6CD8BC84977BCB30A7E0A48EC73A381A55E5B010C0E2967F7661003AF74E2FE46ACE5870C48990C6C939'
         if ((Get-FileHash -Path $MSI -Algorithm SHA512).Hash -ne $SH)
         {
-            Write-Log @writeLogParams -Message "`n`n ********** `n`n File hash mismatch detected on $($MSI); installation aborted `n`n ********** `n`n"
+            Write-Log @writeLogParams -Message "`n`n ********** `n`n File hash mismatch detected on $($MSI); installation aborted`n`n Hash found is $((Get-FileHash -Path $MSI -Algorithm SHA512).Hash) `n`n ********** `n`n"
         }
         else
         {
