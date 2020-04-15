@@ -26,8 +26,10 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __Deployment Process__
 
+  
   - Deploy the template
     - [recommended] Update variables and Run *New-AzStackARMDeployment.ps1*
+      - __NOTE__ Update the $instanceNumber to something unique prior to running *New-AzStackARMDeployment.ps1*
     - [Azure Commercial](https://aka.ms/Azure-AzStackPOC)
     - [Azure US Government](https://aka.ms/AzureGov-AzStackPOC)
   - Log on to Azure VM (default username is _administrator_)
@@ -53,9 +55,12 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __ISO Download URIs__
 
- - [Windows Server 2019 (Evaluation)](https://software-download.microsoft.com/download/17763.253.190108-0006.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso)
- - [Windows Server 2016 (Evaluation)](http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO)
- - [Windows 10 Enterprise (Evaluation)](https://software-download.microsoft.com/download/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso)
+__Note:__ Programatic ISO download occasionally fails due to a timeout error; these links can be used to retrieve the missing file(s)
+
+ - [Windows Server 2019 -Evaluation (Save as D:\WS2019EVALISO.iso)](https://software-download.microsoft.com/download/17763.253.190108-0006.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso)
+ - [Windows Server 2016 - Evaluation (Save as D:\WS2016EVALISO.iso)](http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO)
+ - [Windows 10 Enterprise - Evaluation (Save as D:\Win10EntEval.iso)](https://software-download.microsoft.com/download/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso)
+
 
 ### __Pending Checks and Updates__
 
