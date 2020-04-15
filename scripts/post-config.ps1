@@ -94,14 +94,20 @@
     DownloadWithRetry -Uri http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
 
 
-# Download MSDocs Azure Stack Development Kit PDF
+# Create Learning Material Folder
 
-    DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$env:ALLUSERSPROFILE\Desktop\MSDocs-ASDK-28FEB2020.pdf"
+    $RefMaterialPath = "$($env:ALLUSERSPROFILE)\Desktop\Learning Material"
+    New-Item -Path $RefMaterialPath -ItemType Directory -Force
 
 
-# Download Getting Started Favorites File
+# Download Learning Material: MSDocs Azure Stack Development Kit PDF
 
-    DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$env:ALLUSERSPROFILE\Desktop\Getting_Started.html"
+    DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
+
+
+# Download Learning Material: Getting Started Favorites File
+
+    DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$RefMaterialPath\Getting_Started.html"
 
 
 # Download and Extract Mobaxterm
