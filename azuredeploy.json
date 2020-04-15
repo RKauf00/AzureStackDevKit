@@ -152,7 +152,10 @@
             "defaultValue": "master",
             "allowedValues": [
                 "master",
-                "development"
+                "development",
+                "RK",
+                "NP",
+                "TF"
             ],
             "metadata": {
                 "name": "GitHub Branch"
