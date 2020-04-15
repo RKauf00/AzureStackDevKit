@@ -44,7 +44,11 @@
 
 # Parameters
 
-    [int]  $instanceNumber  =  35
+    [int]  $instanceNumber  =  36
+
+    [ValidateSet("development","master","RK","NP","TF")] [string] $gitBranch = "master"        # GitHub branch // Case Sensitive
+
+    [string] $Template = "https://raw.githubusercontent.com/RKauf00/AzureStackDevKit/$($gitBranch)/azuredeploy.json"
 
     [bool] $GovDeployment  = $TRUE
 
@@ -58,9 +62,6 @@
         [string] $AzEnv = $NULL
         [string] $Location = 'eastus2'
     }
-
-    [ValidateSet("development","master")] [string] $gitBranch = "master"        # GitHub branch 
-    [string] $Template = "https://raw.githubusercontent.com/RKauf00/AzureStackDevKit/$($gitBranch)/azuredeploy.json"
 
     
 # Connect Azure Account
