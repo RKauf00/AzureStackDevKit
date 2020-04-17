@@ -420,7 +420,8 @@ if ($pocParameters.Count -gt 0) {
     #$timeServer = (Test-NetConnection -ComputerName $timeServiceProvider).ResolvedAddresses.ipaddresstostring | Get-Random
     $timeServer = (Resolve-DnsName $timeServiceProvider).IP4Address | Get-Random
 }
-else {
+else
+{
     Write-Log @writeLogParams -Message "timeserver is FQDN"
     $timeServer = $timeServiceProvider
     $i = 0
