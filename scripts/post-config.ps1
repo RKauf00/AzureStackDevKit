@@ -1,4 +1,5 @@
-    Param (
+    Param
+    (
         [Parameter(Mandatory = $true)]
         [string]
         $Username,
@@ -91,7 +92,9 @@
 
 # Download MSFT Edge for Business MSI
 
-    DownloadWithRetry -Uri http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
+    #DownloadWithRetry -Uri http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
+    $MSEdgeURI = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
+    DownloadWithRetry -Uri $MSEdgeURI -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
 
 
 # Create Learning Material Folder
@@ -102,12 +105,16 @@
 
 # Download Learning Material: MSDocs Azure Stack Development Kit PDF
 
-    DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
+    #DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
+    $ASDKDocsPdf = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MSDocs-ASDK-28FEB2020.pdf')}
+    DownloadWithRetry -Uri $ASDKDocsPdf -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
 
 
 # Download Learning Material: Getting Started Favorites File
 
-    DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$RefMaterialPath\Getting_Started.html"
+    #DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$RefMaterialPath\Getting_Started.html"
+    $GetStartHTML = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
+    DownloadWithRetry -Uri $GetStartHTML -DownloadLocation "$RefMaterialPath\Getting_Started.html"
 
 
 # Download and Extract Mobaxterm

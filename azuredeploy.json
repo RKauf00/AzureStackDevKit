@@ -119,6 +119,13 @@
                 "name": "Azure AD Tenant Name"
             }
         },
+        "AzureFileStorageURIs": {
+            "defaultValue": "",
+            "type": "array",
+            "metadata": {
+                "name": "Azure Storage URIs, downloads optional files"
+            }
+        },
         "ASDKConfiguratorObject": {
             "type": "secureObject",
             "defaultValue": {
@@ -133,7 +140,8 @@
                     "IsoPath2019": "D:\\WS2019EVALISO.iso",
                     "VMpwd": "[parameters('adminPassword')]"
                 },
-                "IsoPathWin10": "D:\\Win10EntEval.iso"
+                "IsoPathWin10": "D:\\Win10EntEval.iso",
+                "AzFiles": "[parameters('AzureFileStorageURIs')]"
             }
         },
         "enableRDSH": {

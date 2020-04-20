@@ -118,11 +118,12 @@
     [string] $resourceGroupName        =  "$($resourceGroupNamePrefix)-$($instanceNumber)"
     [array] $AzStorage=
     @{
-        URI = 'https://asdkfiles.azure-stack.us/'
-        Container = 'software'
-        SAS = '?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2022-04-19T23:08:09Z&st=2020-04-20T15:08:09Z&spr=https&sig=wrComGZM21wyOCp%2F%2BzpOVhVSgesAKaPG2CPKd0YYkhA%3D'
-        Files = @('MicrosoftEdgeEnterpriseX64.msi','Getting_Started.html','MSDocs-ASDK-28FEB2020.pdf')
+        URL          =    'https://asdkfiles.azure-stack.us/'
+        Container    =    'files/'
+        SAS          =    '?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2022-04-19T23:08:09Z&st=2020-04-20T15:08:09Z&spr=https&sig=wrComGZM21wyOCp%2F%2BzpOVhVSgesAKaPG2CPKd0YYkhA%3D'
+        Files        =    @('MicrosoftEdgeEnterpriseX64.msi','Getting_Started.html','MSDocs-ASDK-28FEB2020.pdf')
     }
+    [array] $AzFileStorageURIs             =  $AzStorage.Files | %{ $AzStorage.URL + $AzStorage.Container + $_ + $AzStorage.SAS }
 
     # Set Azure VM Values
     [String] $adminUsername            =  'AzStackAdmin'                          # VM Admin User Name
@@ -172,6 +173,8 @@
     $templateParameterObject.Add("subnetPrefix",$subnetPrefix)
     $templateParameterObject.Add("publicDnsName",$publicDnsName.ToLower())
     $templateParameterObject.Add("publicIpAddressType",$publicIpAddressType)
+    $templateParameterObject.Add("AzureFileStorageURIs",$AzFileStorageURIs)
+
 
     ## Start New Deployment
     New-AzResourceGroupDeployment `
