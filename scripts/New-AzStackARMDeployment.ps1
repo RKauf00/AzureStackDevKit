@@ -116,6 +116,13 @@
     [string] $siteLocation             =  $Location                              #"usgovtexas"
     [string] $resourceGroupNamePrefix  =  'AzStackPOC'                           # Resource Group Name Prefix
     [string] $resourceGroupName        =  "$($resourceGroupNamePrefix)-$($instanceNumber)"
+    [array] $AzStorage=
+    @{
+        URI = 'https://asdkfiles.azure-stack.us/'
+        Container = 'software'
+        SAS = '?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2022-04-19T23:08:09Z&st=2020-04-20T15:08:09Z&spr=https&sig=wrComGZM21wyOCp%2F%2BzpOVhVSgesAKaPG2CPKd0YYkhA%3D'
+        Files = @('MicrosoftEdgeEnterpriseX64.msi','Getting_Started.html','MSDocs-ASDK-28FEB2020.pdf')
+    }
 
     # Set Azure VM Values
     [String] $adminUsername            =  'AzStackAdmin'                          # VM Admin User Name
