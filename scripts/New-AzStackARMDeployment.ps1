@@ -44,7 +44,7 @@
 
 # Parameters
 
-    [int]  $instanceNumber  =  41
+    [int]  $instanceNumber  =  42
 
     [ValidateSet("development","master","RK","NP","TF")] [string] $gitBranch = "master"        # GitHub branch // Case Sensitive
 
@@ -113,15 +113,15 @@
     # Set Azure Values
  
     [string] $AzureADTenant            =  Read-Host "Azure AD Tenant (Format: <AzureADTenant>.onmicrosoft.com)"
-    [string] $siteLocation             =  $Location                              #"usgovtexas"
-    [string] $resourceGroupNamePrefix  =  'AzStackPOC'                           # Resource Group Name Prefix
+    [string] $siteLocation             =  $Location
+    [string] $resourceGroupNamePrefix  =  'AzStackPOC'
     [string] $resourceGroupName        =  "$($resourceGroupNamePrefix)-$($instanceNumber)"
     
     # Set Azure Storage File Download Values
 
     [array] $AzStorage=
     @{
-        URL          =    'https://generalstorage.blob.core.usgovcloudapi.net' #asdkfiles.azure-stack.us/'
+        URL          =    'https://generalstorage.blob.core.usgovcloudapi.net/'
         Container    =    'files/'
         SAS          =    '?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2022-04-19T23:08:09Z&st=2020-04-20T15:08:09Z&spr=https&sig=wrComGZM21wyOCp%2F%2BzpOVhVSgesAKaPG2CPKd0YYkhA%3D'
         Files        =    @('MicrosoftEdgeEnterpriseX64.msi','Getting_Started.html','MSDocs-ASDK-28FEB2020.pdf')
@@ -129,9 +129,9 @@
     [array] $AzFileStorageURIs             =  $AzStorage.Files | %{ $AzStorage.URL + $AzStorage.Container + $_ + $AzStorage.SAS }
 
     # Set Azure VM Values
-    [String] $adminUsername            =  'AzStackAdmin'                          # VM Admin User Name
+    [String] $adminUsername            =  'AzStackAdmin'
     [string] $virtualMachineName       =  'AzStackHost'
-    [string] $virtualMachineSize       =  'Standard_E32s_v3'                      # v1811+ requires 256GB RAM
+    [string] $virtualMachineSize       =  'Standard_E32s_v3'
     [int]    $dataDiskSizeinGB         =  1024
     [int]    $dataDiskCount            =  8
     [bool]   $enableRDSH               =  $TRUE
@@ -141,7 +141,7 @@
     [string] $addressPrefix            =  '10.0.0.0/24'
     [string] $subnetName               =  'default'
     [string] $subnetPrefix             =  '10.0.0.0/24'
-    [string] $publicDnsNamePrefix      =  'AzStackPOC'                            # DNS Name Prefix
+    [string] $publicDnsNamePrefix      =  'AzStackPOC'
     [string] $publicDnsName            =  "$($publicDnsNamePrefix)$($instanceNumber)"
     [string] $publicIpAddressType      =  'Dynamic'
 

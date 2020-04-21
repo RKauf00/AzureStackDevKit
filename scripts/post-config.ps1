@@ -213,14 +213,14 @@
             # Download Learning Material: MSDocs Azure Stack Development Kit PDF
 
                 #DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
-                $ASDKDocsPdf = $ASDKConfiguratorObject.AzFiles | Where-Object {$_.Contains('MSDocs-ASDK-28FEB2020.pdf')}
+                $ASDKDocsPdf = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MSDocs-ASDK-28FEB2020.pdf')}
                 Write-Log @writeLogParams -Message "Downloading ASDK Docs PDF file from $($ASDKDocsPdf)"
                 DownloadWithRetry -Uri $ASDKDocsPdf -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
 
             # Download Learning Material: Getting Started Favorites File
 
                 #DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$RefMaterialPath\Getting_Started.html"
-                $GetStartHTML = $ASDKConfiguratorObject.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
+                $GetStartHTML = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
                 Write-Log @writeLogParams -Message "Downloading Getting Started HTML file from $($GetStartHTML)"
                 DownloadWithRetry -Uri $GetStartHTML -DownloadLocation "$RefMaterialPath\Getting_Started.html"
 
