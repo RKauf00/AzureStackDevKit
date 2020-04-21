@@ -44,7 +44,7 @@
 
 # Parameters
 
-    [int]  $instanceNumber  =  40
+    [int]  $instanceNumber  =  41
 
     [ValidateSet("development","master","RK","NP","TF")] [string] $gitBranch = "master"        # GitHub branch // Case Sensitive
 
@@ -116,9 +116,12 @@
     [string] $siteLocation             =  $Location                              #"usgovtexas"
     [string] $resourceGroupNamePrefix  =  'AzStackPOC'                           # Resource Group Name Prefix
     [string] $resourceGroupName        =  "$($resourceGroupNamePrefix)-$($instanceNumber)"
+    
+    # Set Azure Storage File Download Values
+
     [array] $AzStorage=
     @{
-        URL          =    'https://asdkfiles.azure-stack.us/'
+        URL          =    'https://generalstorage.blob.core.usgovcloudapi.net' #asdkfiles.azure-stack.us/'
         Container    =    'files/'
         SAS          =    '?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2022-04-19T23:08:09Z&st=2020-04-20T15:08:09Z&spr=https&sig=wrComGZM21wyOCp%2F%2BzpOVhVSgesAKaPG2CPKd0YYkhA%3D'
         Files        =    @('MicrosoftEdgeEnterpriseX64.msi','Getting_Started.html','MSDocs-ASDK-28FEB2020.pdf')
