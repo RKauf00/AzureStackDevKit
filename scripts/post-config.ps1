@@ -90,36 +90,6 @@
     DownloadWithRetry -Uri "$branchFullPath/scripts/Install-ASDK.ps1" -DownloadLocation "$defaultLocalPath\Install-ASDK.ps1"
 
 
-# Download MSFT Edge for Business MSI
-
-    #DownloadWithRetry -Uri http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
-    $MSEdgeURI = $ASDKConfiguratorObject.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
-    Write-Log @writeLogParams -Message "Downloading MS Edge installer from $($MSEdgeURI)"
-    DownloadWithRetry -Uri $MSEdgeURI -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
-
-
-# Create Learning Material Folder
-
-    $RefMaterialPath = "$($env:ALLUSERSPROFILE)\Desktop\Learning Material"
-    New-Item -Path $RefMaterialPath -ItemType Directory -Force
-
-
-# Download Learning Material: MSDocs Azure Stack Development Kit PDF
-
-    #DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
-    $ASDKDocsPdf = $ASDKConfiguratorObject.AzFiles | Where-Object {$_.Contains('MSDocs-ASDK-28FEB2020.pdf')}
-    Write-Log @writeLogParams -Message "Downloading ASDK Docs PDF file from $($ASDKDocsPdf)"
-    DownloadWithRetry -Uri $ASDKDocsPdf -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
-
-
-# Download Learning Material: Getting Started Favorites File
-
-    #DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$RefMaterialPath\Getting_Started.html"
-    $GetStartHTML = $ASDKConfiguratorObject.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
-    Write-Log @writeLogParams -Message "Downloading Getting Started HTML file from $($GetStartHTML)"
-    DownloadWithRetry -Uri $GetStartHTML -DownloadLocation "$RefMaterialPath\Getting_Started.html"
-
-
 # Download and Extract Mobaxterm
 
     DownloadWithRetry -Uri "https://aka.ms/mobaxtermLatest" -DownloadLocation "$defaultLocalPath\Mobaxterm.zip"
@@ -221,10 +191,38 @@
             }
 
             ## Download Windows 10 Enterprise Trial
-            if ($ASDKConfiguratorParams.IsoPathWin10)
+            if ($ASDKConfigurator.IsoPathWin10)
             {
                 DownloadWithRetry -Uri https://software-download.microsoft.com/download/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso -DownloadLocation $ASDKConfigurator.IsoPathWin10
             }
+
+            # Download MSFT Edge for Business MSI
+            
+                Write-Log @writeLogParams -Message "$($ASDKConfigurator.AzFiles)"
+
+                #DownloadWithRetry -Uri http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
+                $MSEdgeURI = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
+                Write-Log @writeLogParams -Message "Downloading MS Edge installer from $($MSEdgeURI)"
+                DownloadWithRetry -Uri $MSEdgeURI -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
+
+            # Create Learning Material Folder
+
+                $RefMaterialPath = "$($env:ALLUSERSPROFILE)\Desktop\Learning Material"
+                New-Item -Path $RefMaterialPath -ItemType Directory -Force
+
+            # Download Learning Material: MSDocs Azure Stack Development Kit PDF
+
+                #DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
+                $ASDKDocsPdf = $ASDKConfiguratorObject.AzFiles | Where-Object {$_.Contains('MSDocs-ASDK-28FEB2020.pdf')}
+                Write-Log @writeLogParams -Message "Downloading ASDK Docs PDF file from $($ASDKDocsPdf)"
+                DownloadWithRetry -Uri $ASDKDocsPdf -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
+
+            # Download Learning Material: Getting Started Favorites File
+
+                #DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$RefMaterialPath\Getting_Started.html"
+                $GetStartHTML = $ASDKConfiguratorObject.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
+                Write-Log @writeLogParams -Message "Downloading Getting Started HTML file from $($GetStartHTML)"
+                DownloadWithRetry -Uri $GetStartHTML -DownloadLocation "$RefMaterialPath\Getting_Started.html"
 
             # Set Run-ConfigASDK.ps1 Content
             $commandsToRun |  Out-File -FilePath (Join-Path -Path $defaultLocalPath -ChildPath Run-ConfigASDK.ps1) -Encoding ASCII
