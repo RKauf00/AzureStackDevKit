@@ -122,9 +122,9 @@
 
 # Download and Extract Mobaxterm
 
-        DownloadWithRetry -Uri "https://aka.ms/mobaxtermLatest" -DownloadLocation "$defaultLocalPath\Mobaxterm.zip"
-        Expand-Archive -Path "$defaultLocalPath\Mobaxterm.zip" -DestinationPath "$defaultLocalPath\Mobaxterm"
-        Remove-Item -Path "$defaultLocalPath\Mobaxterm.zip" -Force
+    DownloadWithRetry -Uri "https://aka.ms/mobaxtermLatest" -DownloadLocation "$defaultLocalPath\Mobaxterm.zip"
+    Expand-Archive -Path "$defaultLocalPath\Mobaxterm.zip" -DestinationPath "$defaultLocalPath\Mobaxterm"
+    Remove-Item -Path "$defaultLocalPath\Mobaxterm.zip" -Force
 
 
 # Enable Remoting Firewall Rule
