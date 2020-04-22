@@ -33,7 +33,7 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
        - *Update the __$gitBranch__ variable to target the appropriate branch (case sensitive)*
     - [Azure Commercial](https://aka.ms/Azure-AzStackPOC)
     - [Azure US Government](https://aka.ms/AzureGov-AzStackPOC)
-  - Log on to Azure VM (default username is _administrator_)
+  - Log on to Azure VM (username: _administrator_)
   - Run desktop shortcut 1_Install-ASDK as **administrator**
     - When prompted; complete Azure AD authentication
   - Following automatic restart; log on to the server

@@ -164,7 +164,7 @@ Import-Module AZ
     [array] $AzFileStorageURIs             =  $AzStorage.Files | ForEach-Object { $AzStorage.URL + $AzStorage.Container + $_ + $AzStorage.SAS }
 
     # Set Azure VM Values
-    [String] $adminUsername            =  'AzStackAdmin'
+    [String] $adminUsername            =  'AzStackAdmin'    # if successfully deployed, use administrator to log in
     [string] $virtualMachineName       =  'AzStackHost'
     [string] $virtualMachineSize       =  'Standard_E32s_v3'
     [int]    $dataDiskSizeinGB         =  1024

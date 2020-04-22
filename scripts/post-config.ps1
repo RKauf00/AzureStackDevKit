@@ -197,10 +197,7 @@
             }
 
             # Download MSFT Edge for Business MSI
-            
-                Write-Log @writeLogParams -Message "$($ASDKConfigurator.AzFiles)"
 
-                #DownloadWithRetry -Uri http://dl.delivery.mp.microsoft.com/filestreamingservice/files/6d88cf6b-a578-468f-9ef9-2fea92f7e733/MicrosoftEdgeEnterpriseX64.msi -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
                 $MSEdgeURI = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
                 Write-Log @writeLogParams -Message "Downloading MS Edge installer from $($MSEdgeURI)"
                 DownloadWithRetry -Uri $MSEdgeURI -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
@@ -212,20 +209,19 @@
 
             # Download Learning Material: MSDocs Azure Stack Development Kit PDF
 
-                #DownloadWithRetry -Uri "$branchFullPath/files/MSDocs-ASDK-28FEB2020.pdf" -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
                 $ASDKDocsPdf = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MSDocs-ASDK-28FEB2020.pdf')}
                 Write-Log @writeLogParams -Message "Downloading ASDK Docs PDF file from $($ASDKDocsPdf)"
                 DownloadWithRetry -Uri $ASDKDocsPdf -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
 
             # Download Learning Material: Getting Started Favorites File
 
-                #DownloadWithRetry -Uri "$branchFullPath/files/Getting_Started.html" -DownloadLocation "$RefMaterialPath\Getting_Started.html"
                 $GetStartHTML = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
                 Write-Log @writeLogParams -Message "Downloading Getting Started HTML file from $($GetStartHTML)"
                 DownloadWithRetry -Uri $GetStartHTML -DownloadLocation "$RefMaterialPath\Getting_Started.html"
 
             # Set Run-ConfigASDK.ps1 Content
-            $commandsToRun |  Out-File -FilePath (Join-Path -Path $defaultLocalPath -ChildPath Run-ConfigASDK.ps1) -Encoding ASCII
+                
+                $commandsToRun |  Out-File -FilePath (Join-Path -Path $defaultLocalPath -ChildPath Run-ConfigASDK.ps1) -Encoding ASCII
         }
     }
     else
@@ -320,7 +316,7 @@
     $Shortcut = $WshShell.CreateShortcut("$env:ALLUSERSPROFILE\Desktop\1_AAD_LatestVer_Install-ASDK.lnk")
     $Shortcut.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
     $Shortcut.WorkingDirectory = "$defaultLocalPath"
-    $Shortcut.Arguments = "-Noexit -command & {.\Install-ASDK.ps1 -LocalAdminPass `$('$($ASDKConfiguratorParams.VMpwd)' | ConvertTo-SecureString -AsPlainText -Force) -DeploymentType AAD -AADTenant $($ASDKConfiguratorParams.azureDirectoryTenantName) -DNSForwarder $ASDKConfiguratorParams.DNSForwarder -Version latest}"
+    $Shortcut.Arguments = "-Noexit -command & {.\Install-ASDK.ps1 -LocalAdminPass `$('$($ASDKConfiguratorParams.VMpwd)' | ConvertTo-SecureString -AsPlainText -Force) -DeploymentType AAD -AADTenant $($ASDKConfiguratorParams.azureDirectoryTenantName) -DNSForwarder $($ASDKConfiguratorParams.DNSForwarder) -Version latest}"
     $Shortcut.Save()
 
     Write-Log @writeLogParams -Message "Creating shortcut: 2_Run-ConfigAsdk.lnk"
