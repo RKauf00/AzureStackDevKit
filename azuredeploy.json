@@ -126,6 +126,13 @@
                 "name": "Azure Storage URIs, downloads optional files"
             }
         },
+        "DNSForwarder": {
+            "defaultValue": "1.1.1.1",
+            "type": "string",
+            "metadata": {
+                "name": "DNS Forwarder Address; default is 1.1.1.1"
+            }
+        },
         "ASDKConfiguratorObject": {
             "type": "secureObject",
             "defaultValue": {
@@ -138,7 +145,8 @@
                     "downloadPath": "D:\\ASDKfiles",
                     "ISOPath": "D:\\WS2016EVALISO.iso",
                     "IsoPath2019": "D:\\WS2019EVALISO.iso",
-                    "VMpwd": "[parameters('adminPassword')]"
+                    "VMpwd": "[parameters('adminPassword')]",
+                    "DNSForwarder": "[parameters('DNSForwarder')]"
                 },
                 "IsoPathWin10": "D:\\Win10EntEval.iso",
                 "AzFiles": "[parameters('AzureFileStorageURIs')]"

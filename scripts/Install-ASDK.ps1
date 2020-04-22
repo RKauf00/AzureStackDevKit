@@ -25,6 +25,9 @@ param (
     [string]
     $version,
 
+    [string]
+    $DNSForwarder = "1.1.1.1",
+
     [pscredential]
     $InfraAzureDirectoryTenantAdminCredential
 )
@@ -410,10 +413,9 @@ if (Get-ScheduledJob -name $taskName2 -ErrorAction SilentlyContinue)
 }
 Register-ScheduledJob -ScriptBlock $taskstoCompleteUponSuccess -Name $taskName2 -Trigger $trigger -ScheduledJobOption $option
 
-#$timeServiceProvider = @('51.137.137.111')
 $timeServiceProvider = 'time.windows.com'
-#$timeServiceProvider = @("pool.ntp.org") | Get-Random
-Write-Log @writeLogParams -Message "Picking random timeserver from $timeServiceProvider"
+#$timeServiceProvider = @('51.137.137.111')
+Write-Log @writeLogParams -Message "Testing timeserver $timeServiceProvider"
 
 if ($pocParameters.Count -gt 0) {
     Write-Log @writeLogParams -Message "timeserver is IP address"
@@ -427,7 +429,7 @@ else
     $i = 0
     $sleep = 1
     $ttlThreshold = 100    
-    Write-Verbose "Making sure that $timeServer is reachable and TTL ($ttlThreshold) is longer enough to be resolved by the ASDK setup" -Verbose
+    Write-Verbose "Ensuring $timeServer is reachable and TTL ($ttlThreshold) is long enough to be resolved by the ASDK setup" -Verbose
     Clear-DnsClientCache
     Resolve-DnsName -Name $timeServer
 
@@ -451,8 +453,8 @@ else
             else
             {
                 Write-Verbose "$timeServer TTL is $($dnsResult[0].ttl)" -Verbose
-                #As a workaround this solves name resolution issues with the timeserver, can be considered 
-                #Get-NetAdapter | Disable-NetAdapter -PassThru -Confirm:$false | Enable-NetAdapter
+                # Potential method to resolve name resolution issues with the timeserver:
+                # Get-NetAdapter | Disable-NetAdapter -PassThru -Confirm:$false | Enable-NetAdapter
                 break    
             }
         }
@@ -468,16 +470,16 @@ else
     }
 }
 
-
 Write-Log @writeLogParams -Message "timeserver: $timeServer"
 
 if ($DeploymentType -eq "AAD")
 {
-    $global:InstallAzSPOCParams = @{
+    $global:InstallAzSPOCParams=
+    @{
         AdminPassword = $localAdminPass
         InfraAzureDirectoryTenantName = $aadTenant
         TimeServer = $timeServer
-        DNSForwarder = "1.1.1.1"
+        DNSForwarder = $DNSForwarder #"1.1.1.1"
         #DNSForwarder = "8.8.8.8"
     }
     if ($pocParameters.Count -gt 0)
@@ -494,10 +496,11 @@ if ($DeploymentType -eq "AAD")
 
 if ($DeploymentType -eq "ADFS")
 {
-    $global:InstallAzSPOCParams = @{
+    $global:InstallAzSPOCParams=
+    @{
         AdminPassword = $localAdminPass
         TimeServer = $timeServer
-        DNSForwarder = "1.1.1.1"
+        DNSForwarder = $DNSForwarder #"1.1.1.1"
         UseADFS = $true
         #DNSForwarder = "8.8.8.8"
     }

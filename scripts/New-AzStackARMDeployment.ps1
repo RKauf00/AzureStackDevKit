@@ -44,7 +44,7 @@
 
 # Parameters
 
-    [int]  $instanceNumber  =  42
+    [int]  $instanceNumber  =  43
 
     [ValidateSet("development","master","RK","NP","TF")] [string] $gitBranch = "master"        # GitHub branch // Case Sensitive
 
@@ -135,6 +135,7 @@
     [int]    $dataDiskSizeinGB         =  1024
     [int]    $dataDiskCount            =  8
     [bool]   $enableRDSH               =  $TRUE
+    [string] $DNSForwarder             =  "1.1.1.1"
 
     # Set Azure Networking Values
     [string] $virtualNetworkName       =  'AzureStack-VNET'
@@ -177,7 +178,7 @@
     $templateParameterObject.Add("publicDnsName",$publicDnsName.ToLower())
     $templateParameterObject.Add("publicIpAddressType",$publicIpAddressType)
     $templateParameterObject.Add("AzureFileStorageURIs",$AzFileStorageURIs)
-
+    $templateParameterObject.Add("DNSForwarder",$DNSForwarder)
 
     ## Start New Deployment
     New-AzResourceGroupDeployment `
