@@ -37,20 +37,48 @@
     #
 
 
+# Function(s)
+
+    function publicDnsNameTest
+    {
+        do
+        {
+            $CheckAgain=$NULL
+
+            [string] $publicDnsNameURI = "$($publicDnsName).$($Location).cloudapp.usgovcloudapi.net"
+
+            $UriCheck = Test-NetConnection $publicDnsNameURI -InformationLevel Detailed -Verbose:$FALSE
+
+            if ($UriCheck.RemoteAddress.IPAddressToString)
+            {
+                $instanceNumber = $instanceNumber++
+                [string] $publicDnsName  =  "$($publicDnsNamePrefix)$($instanceModifier)$($instanceNumber)"
+                $CheckAgain=$TRUE
+            }
+            else
+            {
+                $CheckAgain=$FALSE
+            }
+        }
+        while ($CheckAgain -eq $TRUE)
+    }
+
+
 # Import Module(s)
 
-    Import-Module AZ
+Import-Module AZ
 
 
 # Parameters
 
-    [int]  $instanceNumber  =  43
+    [string] $instanceModifier =  'RK'
+    [int]    $instanceNumber   =  43
 
     [ValidateSet("development","master","RK","NP","TF")] [string] $gitBranch = "master"        # GitHub branch // Case Sensitive
 
     [string] $Template = "https://raw.githubusercontent.com/RKauf00/AzureStackDevKit/$($gitBranch)/azuredeploy.json"
 
-    [bool] $GovDeployment  = $TRUE
+    [bool]   $GovDeployment  = $TRUE
 
     if ($GovDeployment -eq $TRUE)
     {
@@ -142,9 +170,11 @@
     [string] $addressPrefix            =  '10.0.0.0/24'
     [string] $subnetName               =  'default'
     [string] $subnetPrefix             =  '10.0.0.0/24'
-    [string] $publicDnsNamePrefix      =  'AzStackPOC'
-    [string] $publicDnsName            =  "$($publicDnsNamePrefix)$($instanceNumber)"
     [string] $publicIpAddressType      =  'Dynamic'
+    [string] $publicDnsNamePrefix      =  'AzStackPOC'
+    [string] $publicDnsName            =  "$($publicDnsNamePrefix)$($instanceModifier)$($instanceNumber)"
+    
+    publicDnsNameTest   # ; $publicDnsName
 
     # Set Administrator Passwords
     [SecureString] $SecureAdminPassword         =  Read-Host -AsSecureString -Prompt "Provide password for local Administrator ($($adminUsername))"
