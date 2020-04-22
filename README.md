@@ -35,7 +35,7 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
            <img style="border:1px solid black;" src="media/img/gitBranch.png" alt="Variable Update" title="Update instanceModifier" height="40"/>  
     - [Azure Commercial](https://aka.ms/Azure-AzStackPOC)
     - [Azure US Government](https://aka.ms/AzureGov-AzStackPOC)
-  - Log on to Azure VM (username: _administrator_)  
+  - Log on to Azure VM (username: __administrator__)  
       <img style="border:1px solid black;" src="media/img/admAuth.png" alt="RunAs" title="Run Install Script" height="80"/>  
   - Use **Run as administrator** to launch desktop installer shortcut (1_Install-ASDK)  
       <img style="border:1px solid black;" src="media/img/InstallASDK.png" alt="RunAs" title="Run Install Script" height="120"/>  
