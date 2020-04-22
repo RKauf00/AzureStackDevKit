@@ -29,9 +29,9 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
   
   - Deploy the template
     - [*recommended*] Update variables and Run *New-AzStackARMDeployment.ps1*
-       - *Set __$instanceIdentifier__ variable to something unique prior to running*  
+       - Set __$instanceIdentifier__ variable to something unique prior to running  
            <img style="border:1px solid black;" src="media/img/instMod.png" alt="Variable Update" title="Update instanceModifier" height="50"/>  
-       - *Update the __$gitBranch__ variable to target the appropriate branch (case sensitive)*  
+       - Update the __$gitBranch__ variable to target the appropriate branch (case sensitive)  
            <img style="border:1px solid black;" src="media/img/gitBranch.png" alt="Variable Update" title="Update instanceModifier" height="40"/>  
     - [Azure Commercial](https://aka.ms/Azure-AzStackPOC)
     - [Azure US Government](https://aka.ms/AzureGov-AzStackPOC)
