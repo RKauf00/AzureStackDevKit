@@ -19,22 +19,19 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __Deploy ARM template__
 
-[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FRKauf00%2FAzureStackDevKit%2Fmaster%2Fazuredeploy.json)
-
+- [*recommended*] Update and Run *New-AzStackARMDeployment.ps1*
+    - Set __$instanceIdentifier__ to a unique value prior to running  
+        <img style="border:1px solid black;" src="media/img/instMod.png" alt="Variable Update" title="Update instanceModifier" height="50"/>  
+    - Update the __$gitBranch__ variable to target desired branch (case sensitive)  
+        <img style="border:1px solid black;" src="media/img/gitBranch.png" alt="Variable Update" title="Update instanceModifier" height="40"/>  
+- [Azure Commercial](https://aka.ms/Azure-AzStackPOC)  
+[![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FRKauf00%2FAzureStackDevKit%2Fmaster%2Fazuredeploy.json)  
+- [Azure US Government](https://aka.ms/AzureGov-AzStackPOC)  
 [![Deploy to Azure Gov](https://azuredeploy.net/AzureGov.png)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FRKauf00%2FAzureStackDevKit%2Fmaster%2Fazuredeploy.json)
 
 
-### __Deployment Process__
+### __Implement and Configure ASDK__
 
-  
-  - Deploy the template
-    - [*recommended*] Update and Run *New-AzStackARMDeployment.ps1*
-       - Set __$instanceIdentifier__ to a unique value prior to running  
-           <img style="border:1px solid black;" src="media/img/instMod.png" alt="Variable Update" title="Update instanceModifier" height="50"/>  
-       - Update the __$gitBranch__ variable to target desired branch (case sensitive)  
-           <img style="border:1px solid black;" src="media/img/gitBranch.png" alt="Variable Update" title="Update instanceModifier" height="40"/>  
-    - [Azure Commercial](https://aka.ms/Azure-AzStackPOC)
-    - [Azure US Government](https://aka.ms/AzureGov-AzStackPOC)
   - Log on to Azure VM
     - Account Name: __administrator__  
       <img style="border:1px solid black;" src="media/img/admAuth.png" alt="RunAs" title="Run Install Script" height="80"/>  
