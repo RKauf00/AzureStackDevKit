@@ -1,8 +1,8 @@
-# __Deploy Azure Stack on an Azure VM__
+# __Deploy Azure Stack Development Kit on an Azure VM__
 
 ## __Description__
 
-Creates a new VM and installs prerequisites to install AzureStack Development kit (ASDK) to run PoC
+Creates a new Azure VM and installs prerequisites to install the AzureStack Development kit (ASDK)
 
 
 ## __Intent__
