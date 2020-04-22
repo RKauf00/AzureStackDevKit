@@ -90,13 +90,13 @@ PS C:\Temp> & "<PathToFile>\New-AzStackARMDeployment.ps1"
 #### __Microsoft Docs ASDK PDF__
 
 `
-C:\_GettingStarted\MSDocs-ASDK-28FEB2020.pdf
+C:\Users\<UserAccount>\Desktop\Learning Material\MSDocs-ASDK-28FEB2020.pdf
 `
 
 #### __Getting Start with Azure Stack Links__
 
 `
-C:\_GettingStarted\MSDocs-ASDK-28FEB2020.pdf
+C:\Users\<UserAccount>\Desktop\Learning Material\MSDocs-ASDK-28FEB2020.pdf
 `
 
 ## __Updates / Change log__
