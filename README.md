@@ -29,9 +29,8 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
   
   - Deploy the template
     - [recommended] Update variables and Run *New-AzStackARMDeployment.ps1*
-      - __*New-AzStackARMDeployment.ps1* NOTES:__
-       - Update the $instanceNumber to something unique prior to running 
-       - Update the $gitBranch to target the appropriate branch (case sensitive)
+       - *Update __$instanceIdentifier__ variable to something unique prior to running*
+       - *Update the __$gitBranch__ variable to target the appropriate branch (case sensitive)*
     - [Azure Commercial](https://aka.ms/Azure-AzStackPOC)
     - [Azure US Government](https://aka.ms/AzureGov-AzStackPOC)
   - Log on to Azure VM (default username is _administrator_)

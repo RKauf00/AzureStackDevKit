@@ -46,21 +46,28 @@
             $CheckAgain=$NULL
 
             [string] $publicDnsNameURI = "$($publicDnsName).$($Location).cloudapp.usgovcloudapi.net"
+            Write-Verbose "Checking publicDnsName: $($publicDnsName)"
 
             $UriCheck = Test-NetConnection $publicDnsNameURI -InformationLevel Detailed -Verbose:$FALSE
 
             if ($UriCheck.RemoteAddress.IPAddressToString)
             {
+                Write-Verbose "DNS name in use; updating and rechecking"
                 $instanceNumber = $instanceNumber++
                 [string] $publicDnsName  =  "$($publicDnsNamePrefix)$($instanceModifier)$($instanceNumber)"
                 $CheckAgain=$TRUE
             }
             else
             {
+                Write-Verbose "DNS name is available; continuing"
+                [string] $publicDnsName  =  "$($publicDnsNamePrefix)$($instanceModifier)$($instanceNumber)"
                 $CheckAgain=$FALSE
             }
         }
         while ($CheckAgain -eq $TRUE)
+
+        Write-Verbose "publicDnsTest is complete; publicDnsName is $($publicDnsName)"
+        return $publicDnsName
     }
 
 
@@ -143,7 +150,7 @@ Import-Module AZ
     [string] $AzureADTenant            =  Read-Host "Azure AD Tenant (Format: <AzureADTenant>.onmicrosoft.com)"
     [string] $siteLocation             =  $Location
     [string] $resourceGroupNamePrefix  =  'AzStackPOC'
-    [string] $resourceGroupName        =  "$($resourceGroupNamePrefix)-$($instanceNumber)"
+    [string] $resourceGroupName        =  "$($resourceGroupNamePrefix)-$($instanceModifier)$($instanceNumber)"
     
     # Set Azure Storage File Download Values
 
@@ -154,7 +161,7 @@ Import-Module AZ
         SAS          =    '?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2022-04-19T23:08:09Z&st=2020-04-20T15:08:09Z&spr=https&sig=wrComGZM21wyOCp%2F%2BzpOVhVSgesAKaPG2CPKd0YYkhA%3D'
         Files        =    @('MicrosoftEdgeEnterpriseX64.msi','Getting_Started.html','MSDocs-ASDK-28FEB2020.pdf')
     }
-    [array] $AzFileStorageURIs             =  $AzStorage.Files | %{ $AzStorage.URL + $AzStorage.Container + $_ + $AzStorage.SAS }
+    [array] $AzFileStorageURIs             =  $AzStorage.Files | ForEach-Object { $AzStorage.URL + $AzStorage.Container + $_ + $AzStorage.SAS }
 
     # Set Azure VM Values
     [String] $adminUsername            =  'AzStackAdmin'
@@ -173,8 +180,7 @@ Import-Module AZ
     [string] $publicIpAddressType      =  'Dynamic'
     [string] $publicDnsNamePrefix      =  'AzStackPOC'
     [string] $publicDnsName            =  "$($publicDnsNamePrefix)$($instanceModifier)$($instanceNumber)"
-    
-    publicDnsNameTest   # ; $publicDnsName
+    [string] $publicDnsName            =  publicDnsNameTest
 
     # Set Administrator Passwords
     [SecureString] $SecureAdminPassword         =  Read-Host -AsSecureString -Prompt "Provide password for local Administrator ($($adminUsername))"
