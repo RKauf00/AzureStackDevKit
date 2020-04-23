@@ -32,36 +32,32 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __Implement and Configure ASDK__
 
-  - Log on to Azure VM  
-    - Account Name: __administrator__  
+  - Log on to Azure VM using __administrator__ account  
       <img style="border:1px solid black;" src="media/img/admAuth.png" alt="RunAs" title="Run Install Script" height="80"/>  
   - Use **Run as administrator** to launch desktop installer shortcut (1_Install-ASDK)  
       <img style="border:1px solid black;" src="media/img/InstallASDK.png" alt="RunAs" title="Run Install Script" height="120"/>  
   - Authenticate to Azure AD when prompted  
       <img style="border:1px solid black;" src="media/img/AzureAuth.png" alt="AAD Auth" title="Azure AD Authentication" height="230" />  
-  - Following automatic restart; log on to the server  
-    - Account updates to use AzureStack domain account  
-    - Acount Name: **AzureStack\AzureStackAdmin**  
-    - Account Password: Use password assigned to _Administrator_ account  
+  - Following automatic restart; log back on to Azure VM using **AzureStack\AzureStackAdmin** (same password as administrator)  
         <img style="border:1px solid black;" src="media/img/asaAdmAuth.png" alt="AAD Auth" title="Azure AD Authentication" height="100" />  
+  - Validate ISO file downloads
+    - If an ISO failed to download, use the appropriate [link below](\README.md#ISO%20Download%20URIs) to download it  
+      - Windows Server 2019 | D:\WS2019EVALISO.iso
+      - Windows Server 2016 | D:\WS2016EVALISO.iso
+      - Windows 10 Enterprise | D:\Win10EntEval.iso
+  - Run demo configuration script  
+       <img style="border:1px solid black;" src="media/img/psAdm_AzSPoC.png" alt="Demo Config" title="Azure Stack POC demo config script" height="50" />  
+    - Run PowerShell with *Administrative* privileges
+    - Execute command: ``` & C:\Users\AzureStackAdmin\Desktop\2_Demo_Config.lnk ```  
+      - Provide password for VMs that will be created  
+      - Provide __AzureStack\AzureStackAdmin__ password when prompted  
+      - Provide __Azure AD Account Name__ when prompted  
+      - Provide __Azure AD Account Password__ when prompted  
   - [*optional*] Update Default Browser to Edge (Chromium)  
     - [*optional*] Configure default settings
       - [*optional*] *Page Layout*: *Custom* with *Content*: *Off*
       - [*optional*] *Settings* > *On Startup* > *Specific Page* > *Add a New Page* > *https://adminportal.local.azurestack.external/*
       - [*optional*] *Settings* > *On Startup* > *Specific Page* > *Add a New Page* > *https://portal.local.azurestack.external/*
-  - Validate Windows evaluation ISO files downloaded
-    - If an ISO failed to download, use the appropriate [link below](\README.md#ISO%20Download%20URIs) to download it  
-    - Windows Server 2019 | D:\WS2019EVALISO.iso
-    - Windows Server 2016 | D:\WS2016EVALISO.iso
-    - Windows 10 Enterprise | D:\Win10EntEval.iso
-  - Run demo configuration script
-    - Run PowerShell with *Administrative* privileges
-    - Execute command: ``` & C:\Users\AzureStackAdmin\Desktop\2_Demo_Config.lnk ```  
-        <img style="border:1px solid black;" src="media/img/psAdm_AzSPoC.png" alt="Demo Config" title="Azure Stack POC demo config script" height="50" />  
-      - Provide password for VMs that will be created  
-      - Provide __AzureStack\AzureStackAdmin__ password when prompted  
-      - Provide __Azure AD Account Name__ when prompted  
-      - Provide __Azure AD Account Password__ when prompted  
   - Launch Azure Stack Admin Portal shortcut on desktop  
     - Validate Portal connection and authentication  
 
