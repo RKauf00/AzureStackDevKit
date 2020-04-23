@@ -43,17 +43,18 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
     - Account updates to use AzureStack domain account  
     - Acount Name: **AzureStack\AzureStackAdmin**  
     - Account Password: Use password assigned to _Administrator_ account  
-      <img style="border:1px solid black;" src="media/img/asaAdmAuth.png" alt="AAD Auth" title="Azure AD Authentication" height="100" />  
+        <img style="border:1px solid black;" src="media/img/asaAdmAuth.png" alt="AAD Auth" title="Azure AD Authentication" height="100" />  
   - [*optional*] Update Default Browser to Edge (Chromium)  
     - [*optional*] Configure default settings
       - [*optional*] *Page Layout*: *Custom* with *Content*: *Off*
       - [*optional*] *Settings* > *On Startup* > *Specific Page* > *Add a New Page* > *https://adminportal.local.azurestack.external/*
       - [*optional*] *Settings* > *On Startup* > *Specific Page* > *Add a New Page* > *https://portal.local.azurestack.external/*
   - Run PowerShell with Administrative privileges
-    - Run *& C:\AzSPoC\AzSPoC.ps1*
-    - Provide Azure AD Account Name at prompt
-    - Provide Azure AD Account Password at prompt
-  - Launch Azure Stack Admin Portal shortcut on desktop
+    - Run *& C:\AzSPoC\AzSPoC.ps1*  
+        <img style="border:1px solid black;" src="media/img/AzSPoC.png" alt="AzSPoC Config" title="Azure Stack POC config script" height="100" />  
+    - Provide Azure AD Account Name at prompt  
+    - Provide Azure AD Account Password at prompt  
+  - Launch Azure Stack Admin Portal shortcut on desktop  
     - Validate Portal connection and authentication  
 
 
