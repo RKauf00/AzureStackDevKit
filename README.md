@@ -57,7 +57,7 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
   - Run demo configuration script
     - Run PowerShell with *Administrative* privileges
     - Execute command: ``` & C:\Users\AzureStackAdmin\Desktop\2_Demo_Config.lnk ```  
-        <img style="border:1px solid black;" src="media/img/psAdm_AzSPoC.png" alt="Demo Config" title="Azure Stack POC demo config script" height="60" />  
+        <img style="border:1px solid black;" src="media/img/psAdm_AzSPoC.png" alt="Demo Config" title="Azure Stack POC demo config script" height="50" />  
       - Provide local admin account password when prompted  
       - Provide __AzureStack\AzureStackAdmin__ password when prompted  
       - Provide __Azure AD Account Name__ when prompted  
