@@ -245,7 +245,14 @@ function workaround3
 
 function createDesktopShortcuts
 {
-    #Create all user desktop shotcuts for Azure Stack Admin and Tenant portal
+    # Create all user desktop shotcuts
+
+    $WshShell = New-Object -comObject WScript.Shell
+    $Shortcut = $WshShell.CreateShortcut("$env:ALLUSERSPROFILE\Desktop\2_Demo_Config.lnk")
+    $Shortcut.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+    $Shortcut.WorkingDirectory = "C:\AzureStackOnAzureVM"
+    $Shortcut.Arguments = "-Noexit -command & {.\Run-ConfigASDK.ps1}"
+    $Shortcut.Save()
     $Shell = New-Object -ComObject ("WScript.Shell")
             
     $fileName = $env:ALLUSERSPROFILE + "\Desktop\Azure Stack Admin Portal.url"

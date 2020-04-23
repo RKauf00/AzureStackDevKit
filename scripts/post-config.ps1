@@ -316,15 +316,7 @@
     $Shortcut = $WshShell.CreateShortcut("$env:ALLUSERSPROFILE\Desktop\1_AAD_LatestVer_Install-ASDK.lnk")
     $Shortcut.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
     $Shortcut.WorkingDirectory = "$defaultLocalPath"
-    $Shortcut.Arguments = "-Noexit -command & {.\Install-ASDK.ps1 -LocalAdminPass `$('$($ASDKConfiguratorParams.VMpwd)' | ConvertTo-SecureString -AsPlainText -Force) -DeploymentType AAD -AADTenant $($ASDKConfiguratorParams.azureDirectoryTenantName) -DNSForwarder $($ASDKConfiguratorParams.DNSForwarder) -Version latest}"
-    $Shortcut.Save()
-
-    Write-Log @writeLogParams -Message "Creating shortcut: 2_Run-ConfigAsdk.lnk"
-    $WshShell = New-Object -comObject WScript.Shell
-    $Shortcut = $WshShell.CreateShortcut("$env:ALLUSERSPROFILE\Desktop\2_Run-ASDK.lnk")
-    $Shortcut.TargetPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-    $Shortcut.WorkingDirectory = "$defaultLocalPath"
-    $Shortcut.Arguments = "-Noexit -command & {.\Run-ConfigASDK.ps1}"
+    $Shortcut.Arguments = "-Noexit -command & {.\Install-ASDK.ps1 -LocalAdminPass `$('$($ASDKConfiguratorParams.VMpwd)' | ConvertTo-SecureString -AsPlainText -Force) -DeploymentType AAD -AADTenant $($ASDKConfiguratorParams.azureDirectoryTenantName) -DNSForwarder $($ASDKConfigurator.DNSForwarder) -Version latest}"
     $Shortcut.Save()
 
 

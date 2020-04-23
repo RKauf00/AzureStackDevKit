@@ -130,7 +130,7 @@
             "defaultValue": "1.1.1.1",
             "type": "string",
             "metadata": {
-                "name": "DNS Forwarder Address; default is 1.1.1.1"
+                "name": "DNS Forwarder Address"
             }
         },
         "ASDKConfiguratorObject": {
@@ -144,10 +144,9 @@
                     "authenticationType": "AzureAD",
                     "downloadPath": "D:\\ASDKfiles",
                     "ISOPath": "D:\\WS2016EVALISO.iso",
-                    "IsoPath2019": "D:\\WS2019EVALISO.iso",
-                    "VMpwd": "[parameters('adminPassword')]",
-                    "DNSForwarder": "[parameters('DNSForwarder')]"
+                    "IsoPath2019": "D:\\WS2019EVALISO.iso"
                 },
+                "DNSForwarder": "[parameters('DNSForwarder')]",
                 "IsoPathWin10": "D:\\Win10EntEval.iso",
                 "AzFiles": "[parameters('AzureFileStorageURIs')]"
             }

@@ -14,7 +14,7 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __Visualize ARM Template__
 
-[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FRKauf00%2FAzureStackDevKit%2Fmaster%2Fazuredeploy.json)
+[![Visualize](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FRKauf00%2FAzureStackDevKit%2Fmaster%2Fazuredeploy.json)  
 
 
 ### __Deploy ARM template__
@@ -32,7 +32,7 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __Implement and Configure ASDK__
 
-  - Log on to Azure VM
+  - Log on to Azure VM  
     - Account Name: __administrator__  
       <img style="border:1px solid black;" src="media/img/admAuth.png" alt="RunAs" title="Run Install Script" height="80"/>  
   - Use **Run as administrator** to launch desktop installer shortcut (1_Install-ASDK)  
@@ -49,11 +49,19 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
       - [*optional*] *Page Layout*: *Custom* with *Content*: *Off*
       - [*optional*] *Settings* > *On Startup* > *Specific Page* > *Add a New Page* > *https://adminportal.local.azurestack.external/*
       - [*optional*] *Settings* > *On Startup* > *Specific Page* > *Add a New Page* > *https://portal.local.azurestack.external/*
-  - Run PowerShell with Administrative privileges
-    - Run *& C:\AzSPoC\AzSPoC.ps1*  
-        <img style="border:1px solid black;" src="media/img/AzSPoC.png" alt="AzSPoC Config" title="Azure Stack POC config script" height="100" />  
-    - Provide Azure AD Account Name at prompt  
-    - Provide Azure AD Account Password at prompt  
+  - Validate Windows evaluation ISO files downloaded
+    - If an ISO failed to download, use the appropriate [link below](\README.md#ISO%20Download%20URIs) to download it  
+    - Windows Server 2019 | D:\WS2019EVALISO.iso
+    - Windows Server 2016 | D:\WS2016EVALISO.iso
+    - Windows 10 Enterprise | D:\Win10EntEval.iso
+  - Run demo configuration script
+    - Run PowerShell with *Administrative* privileges
+    - Execute command: ``` & C:\Users\AzureStackAdmin\Desktop\2_Demo_Config.lnk ```  
+        <img style="border:1px solid black;" src="media/img/psAdm_AzSPoC.png" alt="Demo Config" title="Azure Stack POC demo config script" height="60" />  
+      - Provide local admin account password when prompted  
+      - Provide __AzureStack\AzureStackAdmin__ password when prompted  
+      - Provide __Azure AD Account Name__ when prompted  
+      - Provide __Azure AD Account Password__ when prompted  
   - Launch Azure Stack Admin Portal shortcut on desktop  
     - Validate Portal connection and authentication  
 
