@@ -196,28 +196,31 @@
                 DownloadWithRetry -Uri https://software-download.microsoft.com/download/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso -DownloadLocation $ASDKConfigurator.IsoPathWin10
             }
 
-            # Download MSFT Edge for Business MSI
-
-                $MSEdgeURI = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
-                Write-Log @writeLogParams -Message "Downloading MS Edge installer from $($MSEdgeURI)"
-                DownloadWithRetry -Uri $MSEdgeURI -DownloadLocation "$defaultLocalPath\MicrosoftEdgeEnterpriseX64.msi"
-
             # Create Learning Material Folder
 
-                $RefMaterialPath = "$($env:ALLUSERSPROFILE)\Desktop\Learning Material"
-                New-Item -Path $RefMaterialPath -ItemType Directory -Force
+            $RefMaterialPath = "$($env:ALLUSERSPROFILE)\Desktop\Learning Material"
+            New-Item -Path $RefMaterialPath -ItemType Directory -Force
+
+            # Download MSFT Edge for Business MSI
+
+                $DL1 = 'MicrosoftEdgeEnterpriseX64.msi'
+                $MSEdgeURI = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains($DL1)}
+                Write-Log @writeLogParams -Message "Downloading MS Edge installer from $($MSEdgeURI)"
+                DownloadWithRetry -Uri $MSEdgeURI -DownloadLocation "$defaultLocalPath\$DL1"
 
             # Download Learning Material: MSDocs Azure Stack Development Kit PDF
 
-                $ASDKDocsPdf = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MSDocs-ASDK-28FEB2020.pdf')}
-                Write-Log @writeLogParams -Message "Downloading ASDK Docs PDF file from $($ASDKDocsPdf)"
-                DownloadWithRetry -Uri $ASDKDocsPdf -DownloadLocation "$RefMaterialPath\MSDocs-ASDK-28FEB2020.pdf"
+                $DL2 = 'MSDocs-ASDK-28FEB2020.pdf'
+                $ASDKDocsPdfURI = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains($DL2)}
+                Write-Log @writeLogParams -Message "Downloading ASDK Docs PDF file from $($ASDKDocsPdfURI)"
+                DownloadWithRetry -Uri $ASDKDocsPdfURI -DownloadLocation "$RefMaterialPath\$DL2"
 
             # Download Learning Material: Getting Started Favorites File
 
-                $GetStartPDF = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('Getting_Started_Links.pdf')}
-                Write-Log @writeLogParams -Message "Downloading Getting Started HTML file from $($GetStartPDF)"
-                DownloadWithRetry -Uri $GetStartPDF -DownloadLocation "$RefMaterialPath\Getting_Started_Links.pdf"
+                $DL3 = 'Getting_Started_Links.pdf'
+                $GetStartPDFURI = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains($DL3)}
+                Write-Log @writeLogParams -Message "Downloading Getting Started HTML file from $($GetStartPDFURI)"
+                DownloadWithRetry -Uri $GetStartPDFURI -DownloadLocation "$RefMaterialPath\$DL3"
 
             # Set Run-ConfigASDK.ps1 Content
                 
