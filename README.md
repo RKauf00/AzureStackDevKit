@@ -42,7 +42,7 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
   - Following automatic restart; log back on to Azure VM using **AzureStack\AzureStackAdmin** (same password as administrator)  
       <img style="border:1px solid black;" src="media/img/asaAdmAuth.png" alt="AAD Auth" title="Azure AD Authentication" height="100" />  
   - Validate ISO file downloads
-    - If an ISO failed to download, use the appropriate [link below](\README.md#ISO%20Download%20URIs) to download it  
+    - If an ISO failed to download, use appropriate [link below](\README.md#ISO%20Download%20URIs) to download it  
       - Windows Server 2019 | D:\WS2019EVALISO.iso
       - Windows Server 2016 | D:\WS2016EVALISO.iso
       - Windows 10 Enterprise | D:\Win10EntEval.iso
@@ -72,12 +72,7 @@ __Note:__ Programatic ISO download occasionally fails due to a timeout error; th
 
 #### __Pending Checks and Updates__
 
-  - Windows Server 2016 and Windows 10 eval ISO download timeout
-    - Windows Server 2016 Eval ISO
-      - URI Validated, but timing out during deployment
-      - Move copy to AzStorage?
-      - [Download URI](http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO)
-  - Check GettingStarted.html file post-download; works from repo, but last download was corrupted
+  - 
 
 
 #### __Example__
