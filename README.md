@@ -36,10 +36,11 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
       <img style="border:1px solid black;" src="media/img/admAuth.png" alt="RunAs" title="Run Install Script" height="80"/>  
   - Use **Run as administrator** to launch desktop installer shortcut (1_Install-ASDK)  
       <img style="border:1px solid black;" src="media/img/InstallASDK.png" alt="RunAs" title="Run Install Script" height="120"/>  
+  - Provide __administrator__ password when prompted
   - Authenticate to Azure AD when prompted  
       <img style="border:1px solid black;" src="media/img/AzureAuth.png" alt="AAD Auth" title="Azure AD Authentication" height="230" />  
   - Following automatic restart; log back on to Azure VM using **AzureStack\AzureStackAdmin** (same password as administrator)  
-        <img style="border:1px solid black;" src="media/img/asaAdmAuth.png" alt="AAD Auth" title="Azure AD Authentication" height="100" />  
+      <img style="border:1px solid black;" src="media/img/asaAdmAuth.png" alt="AAD Auth" title="Azure AD Authentication" height="100" />  
   - Validate ISO file downloads
     - If an ISO failed to download, use the appropriate [link below](\README.md#ISO%20Download%20URIs) to download it  
       - Windows Server 2019 | D:\WS2019EVALISO.iso
