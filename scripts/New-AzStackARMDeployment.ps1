@@ -78,8 +78,8 @@ Import-Module AZ
 
 # Parameters
 
-    [string] $instanceModifier =  'RK'
-    [int]    $instanceNumber   =  01
+    [string] $instanceModifier =  'RK-C'
+    [int]    $instanceNumber   =  1
 
     [ValidateSet("development","master","RK","NP","TF")] [string] $gitBranch = "master"        # GitHub branch // Case Sensitive
 
@@ -90,7 +90,7 @@ Import-Module AZ
     if ($GovDeployment -eq $TRUE)
     {
         [string] $AzEnv = 'AzureUSGovernment'
-        [string] $Location = 'usgovtexas'
+        [string] $Location = 'usgovvirginia' #'usgovtexas'
     }
     else
     {
