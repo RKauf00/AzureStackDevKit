@@ -215,9 +215,9 @@
 
             # Download Learning Material: Getting Started Favorites File
 
-                $GetStartHTML = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('MicrosoftEdgeEnterpriseX64.msi')}
-                Write-Log @writeLogParams -Message "Downloading Getting Started HTML file from $($GetStartHTML)"
-                DownloadWithRetry -Uri $GetStartHTML -DownloadLocation "$RefMaterialPath\Getting_Started.html"
+                $GetStartPDF = $ASDKConfigurator.AzFiles | Where-Object {$_.Contains('Getting_Started_Links.pdf')}
+                Write-Log @writeLogParams -Message "Downloading Getting Started HTML file from $($GetStartPDF)"
+                DownloadWithRetry -Uri $GetStartPDF -DownloadLocation "$RefMaterialPath\Getting_Started_Links.pdf"
 
             # Set Run-ConfigASDK.ps1 Content
                 
