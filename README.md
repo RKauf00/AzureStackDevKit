@@ -32,9 +32,9 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
 
 ### __Implement and Configure ASDK__
 
-  - Log on to Azure VM using __administrator__ account  
+  - Log on to Azure VM as __administrator__  
       <img style="border:1px solid black;" src="media/img/admAuth.png" alt="RunAs" title="Run Install Script" height="80"/>  
-  - Use **Run as administrator** to launch desktop installer shortcut (1_Install-ASDK)  
+  - Launch desktop installer shortcut (1_Install-ASDK | __run as administrator__)  
       <img style="border:1px solid black;" src="media/img/InstallASDK.png" alt="RunAs" title="Run Install Script" height="120"/>  
   - Provide __administrator__ password when prompted
   - Authenticate to Azure AD when prompted  
@@ -46,21 +46,17 @@ Facilitate [Azure Stack](https://azure.microsoft.com/en-us/overview/azure-stack/
       - Windows Server 2019 | D:\WS2019EVALISO.iso
       - Windows Server 2016 | D:\WS2016EVALISO.iso
       - Windows 10 Enterprise | D:\Win10EntEval.iso
-  - Run demo configuration script  
+  - Launch PowerShell session (__Run as administrator__)
+  - Run demo configuration script: ``` & C:\Users\AzureStackAdmin\Desktop\2_Demo_Config.lnk ```  
        <img style="border:1px solid black;" src="media/img/psAdm_AzSPoC.png" alt="Demo Config" title="Azure Stack POC demo config script" height="50" />  
-    - Run PowerShell with *Administrative* privileges
-    - Execute command: ``` & C:\Users\AzureStackAdmin\Desktop\2_Demo_Config.lnk ```  
-      - Provide password for VMs that will be created  
-      - Provide __AzureStack\AzureStackAdmin__ password when prompted  
-      - Provide __Azure AD Account Name__ when prompted  
-      - Provide __Azure AD Account Password__ when prompted  
+  - When prompted:
+    - Provide new VM password when prompted  
+    - Provide __AzureStack\AzureStackAdmin__ password when prompted  
+    - Provide __Azure AD Account Name__ when prompted  
+    - Provide __Azure AD Account Password__ when prompted  
   - [*optional*] Update Default Browser to Edge (Chromium)  
-    - [*optional*] Configure default settings
-      - [*optional*] *Page Layout*: *Custom* with *Content*: *Off*
-      - [*optional*] *Settings* > *On Startup* > *Specific Page* > *Add a New Page* > *https://adminportal.local.azurestack.external/*
-      - [*optional*] *Settings* > *On Startup* > *Specific Page* > *Add a New Page* > *https://portal.local.azurestack.external/*
   - Launch Azure Stack Admin Portal shortcut on desktop  
-    - Validate Portal connection and authentication  
+  - Validate Portal connection and authentication  
 
 
 ## __Notes and Reference Material__
