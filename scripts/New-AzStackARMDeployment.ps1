@@ -168,7 +168,7 @@ Import-Module AZ
     [string] $virtualMachineName       =  'AzStackHost'
     [string] $virtualMachineSize       =  'Standard_E32s_v3'
     [int]    $dataDiskSizeinGB         =  1024
-    [int]    $dataDiskCount            =  8
+    [int]    $dataDiskCount            =  4
     [bool]   $enableRDSH               =  $TRUE
     [string] $DNSForwarder             =  "1.1.1.1"
 
