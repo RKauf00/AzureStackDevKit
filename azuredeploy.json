@@ -41,7 +41,7 @@
             }
         },
         "dataDiskCount": {
-            "defaultValue": 4,
+            "defaultValue": 8,
             "type": "int",
             "allowedValues": [
                 4,
@@ -93,14 +93,14 @@
         },
         "subnetPrefix": {
             "type": "string",
-            "defaultValue": "10.0.0.0/24",
+            "defaultValue": "10.6.0.0/24",
             "metadata": {
                 "name": "Subnet Prefix (CIDR Format)"
             }
         },
         "publicIpAddressType": {
             "type": "string",
-            "defaultValue": "Dynamic",
+            "defaultValue": "Static",
             "allowedValues": [
                 "Dynamic",
                 "Static"
