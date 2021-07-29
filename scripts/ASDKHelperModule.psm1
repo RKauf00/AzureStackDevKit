@@ -47,168 +47,33 @@ function Write-Log ([string]$Message, [string]$LogFilePath, [switch]$Overwrite)
     }
 }
 
-function findLatestASDK 
-{
-    [CmdletBinding()]
-    Param(
-        $asdkURIRoot,
-        
-        [string[]]
-        $asdkFileList,
-
-        $count = 8
-    )
-    $versionArray = @()
-    $versionArrayToTest = @()
-    $version = @(Get-Date -Format "yyMM")
-    $suffix = @('-40', '-36', '-1','')
-    
-    for ($i = 0; $i -lt $count; $i++)
-    {       
-        foreach ($s in $suffix) {
-            $version = (Get-Date (Get-Date).AddMonths(-$i) -Format "yyMM")
-            $versionArrayToTest += "$version" + "$s"
-        }
-        Write-Verbose "$versionArrayToTest" -Verbose
-    }
-
-    foreach ($version in $versionArrayToTest)
-    {
-        try
-        {
-            $r = (Invoke-WebRequest -Uri $($asdkURIRoot + $version + '/' + $asdkFileList[0]) -UseBasicParsing -DisableKeepAlive -Method Head -ErrorAction SilentlyContinue).StatusCode
-            if ($r -eq 200)
-            {
-                Write-Verbose "ASDK$version is available." -Verbose
-                $versionArray += $version
-            }
-        }
-        catch [System.Net.WebException],[System.Exception]
-        {
-            Write-Verbose "ASDK$version cannot be located." -Verbose
-            $r = 404
-        }
-    }
-    return $versionArray
-}
-
-
-function testASDKFilesPresence 
-{
-    [CmdletBinding()]
-    param(
-        [string]
-        $asdkURIRoot,
-        
-        [string]
-        $version, 
-        
-        [array]
-        $asdkfileList
-    )
-    
-    $Uris = @()
-
-    foreach ($file in $asdkfileList)
-    {
-        try
-        {
-            $Uri = ($asdkURIRoot + $version + '/' + $file)
-            $r = (Invoke-WebRequest -Uri $Uri -UseBasicParsing -DisableKeepAlive -Method head -ErrorAction SilentlyContinue).statuscode
-            if ($r -eq 200)
-            {
-                $Uris += $Uri
-                Write-Verbose $Uri -Verbose
-            }    
-        }
-        catch
-        {
-            $r = 404
-        }
-    }
-    return $Uris
-}
-
 function ASDKDownloader
 {
     [CmdletBinding()]
     param
     (
-        [switch]
-        $Interactive,
-
         [System.Collections.ArrayList]
         $AsdkFileList,
 
         [string]
-        $ASDKURIRoot = "https://azurestack.azureedge.net/asdk",
-
+        $asdkVersion = '1.2102.0.9',
+    
         [string]
-        $Version,
+        $ASDKURIRoot = "https://azurestackhub.azureedge.net/PR/download/ASDK_$($asdkVersion)/",
 
         [string]
         $Destination = "D:\"
     )
+
     if (!($AsdkFileList))
     {
         $AsdkFileList = @("AzureStackDevelopmentKit.exe")
-        1..10 | ForEach-Object {$AsdkFileList += "AzureStackDevelopmentKit-$_" + ".bin"}
+        1..13 | ForEach-Object {$AsdkFileList += "AzureStackDevelopmentKit-$_" + ".bin"}
     }
 
-    if ($Interactive)
-    {
-        Write-Verbose "ASDKDownloader Interactive mode enabled" -Verbose
-        Write-Verbose "`$defaultLocalPath is $defaultLocalPath" -Verbose
-        if (Test-Path -Path $defaultLocalPath\testedVersions)
-        {
-            Write-Verbose "found testedVersions information" -Verbose
-            $versionArray = Get-Content $defaultLocalPath\testedVersions
-        }
-        else
-        {
-            Write-Verbose "Calling findLatestASDK since no testedVersions information found" -Verbose
-            $versionArray = findLatestASDK -asdkURIRoot $ASDKURIRoot -asdkFileList $AsdkFileList
-        }
-                
-        Write-Verbose "VersionArray is now: $versionArray" -Verbose
-
-        if ($null -eq $Version -or $Version -eq "")
-        {
-            Write-Verbose "No version info available going into interactive mode" -Verbose
-            do
-            {
-                Clear-Host
-                $i = 1
-                Write-Host ""
-                foreach ($v in $versionArray)
-                {
-                    Write-Host "$($i)`. ASDK version: $v"
-                    $i++
-                }
-                Write-Host ""
-                Write-Host -ForegroundColor Yellow -BackgroundColor DarkGray -NoNewline  -Object "Unless it is instructed, select only latest tested ASDK Version "
-                Write-Host ""
-                $s = (Read-Host -Prompt "Select ASDK version to install")
-                if ($s -match "\d")
-                {
-                    $s = $s - 1
-                }
-            }
-            until ($versionArray[$s] -in $versionArray)
-            $version = $versionArray[$s]
-        }
-        else
-        {
-            Write-Verbose "Version explicitly specified skipping interactive mode, Version is now: $version" -Verbose
-            Write-Verbose "Version is now: $version" -Verbose    
-        }
-    }
-        $downloadList = testASDKFilesPresence -asdkURIRoot $ASDKURIRoot -version $Version -asdkfileList $AsdkFileList
-        $downloadList
-        
-        Write-Verbose -Message "Downloading ASDK$Version" -Verbose
-        
-        $downloadList | ForEach-Object {Start-BitsTransfer -Source $_ -DisplayName $_ -Destination $Destination}      
+    Write-Verbose -Message "Downloading ASDK_$asdkVersion" -Verbose
+    
+    $AsdkFileList | ForEach-Object {Start-BitsTransfer -Source $_ -DisplayName $_ -Destination $Destination}      
 }
 
 function extractASDK ($File, $Destination)
