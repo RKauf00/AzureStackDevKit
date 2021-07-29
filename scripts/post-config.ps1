@@ -269,25 +269,38 @@
 
     if (!($AsdkFileList))
     {
+        #$AsdkFileList = @("AzureStackDevelopmentKit.exe")
+        #1..13 | ForEach-Object {$AsdkFileList += "AzureStackDevelopmentKit-$_" + ".bin"}
+
+        $ASDKURIRoot = "https://azurestackhub.azureedge.net/PR/download/ASDK_"
+        $asdkVersion = '1.2102.0.9'
+        $Destination = "D:\"
+        $asdkExtractFolder = "Azure Stack Development Kit"
+
         $AsdkFileList = @("AzureStackDevelopmentKit.exe")
-        1..10 | ForEach-Object {$AsdkFileList += "AzureStackDevelopmentKit-$_" + ".bin"}
+        1..13 | ForEach-Object {$AsdkFileList += "AzureStackDevelopmentKit-$_" + ".bin"}
+
+        Write-Verbose -Message "Downloading ASDK_$asdkVersion" -Verbose
+        
+        $AsdkFileList | ForEach-Object {Start-BitsTransfer -Source ($asdkURIRoot + $asdkVersion + '/' + $_) -DisplayName $_ -Destination $Destination}      
+     #$asdkFiles = ASDKDownloader -Version $latestASDK -Destination $asdkDownloadPath
     }
 
-    if (Test-Path -Path $defaultLocalPath\testedVersions)
-    {
-        $latestASDK = Get-Content $defaultLocalPath\testedVersions | Select-Object -First 1
-    }
-    else
-    {
-        $latestASDK = (findLatestASDK -asdkURIRoot "https://azurestack.azureedge.net/asdk" -asdkFileList $AsdkFileList)[0]
-    }
+    #if (Test-Path -Path $defaultLocalPath\testedVersions)
+    #{
+    #    $latestASDK = Get-Content $defaultLocalPath\testedVersions | Select-Object -First 1
+    #}
+    #else
+    #{
+    #    $latestASDK = (findLatestASDK -asdkURIRoot "https://azurestack.azureedge.net/asdk" -asdkFileList $AsdkFileList)[0]
+    #}
     
-    Write-Log @writeLogParams -Message "Finding available ASDK versions"
+    #Write-Log @writeLogParams -Message "Finding available ASDK versions"
 
-    $asdkDownloadPath = "d:\"
-    $asdkExtractFolder = "Azure Stack Development Kit"
+    #$asdkDownloadPath = "d:\"
+    #$asdkExtractFolder = "Azure Stack Development Kit"
 
-    $asdkFiles = ASDKDownloader -Version $latestASDK -Destination $asdkDownloadPath
+    #$asdkFiles = ASDKDownloader -Version $latestASDK -Destination $asdkDownloadPath
 
     Write-Log @writeLogParams -Message "$asdkFiles"
 
