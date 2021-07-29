@@ -93,7 +93,7 @@
         },
         "subnetPrefix": {
             "type": "string",
-            "defaultValue": "10.6.0.0/24",
+            "defaultValue": "10.0.0.0/24",
             "metadata": {
                 "name": "Subnet Prefix (CIDR Format)"
             }
