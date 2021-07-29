@@ -41,7 +41,7 @@
             }
         },
         "dataDiskCount": {
-            "defaultValue": 8,
+            "defaultValue": 4,
             "type": "int",
             "allowedValues": [
                 4,
@@ -100,7 +100,7 @@
         },
         "publicIpAddressType": {
             "type": "string",
-            "defaultValue": "Static",
+            "defaultValue": "Dynamic",
             "allowedValues": [
                 "Dynamic",
                 "Static"
