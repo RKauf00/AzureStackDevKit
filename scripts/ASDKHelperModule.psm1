@@ -54,12 +54,12 @@ function ASDKDownloader
     (
         [System.Collections.ArrayList]
         $AsdkFileList,
+    
+        [string]
+        $ASDKURIRoot = "https://azurestackhub.azureedge.net/PR/download/ASDK_",
 
         [string]
         $asdkVersion = '1.2102.0.9',
-    
-        [string]
-        $ASDKURIRoot = "https://azurestackhub.azureedge.net/PR/download/ASDK_$($asdkVersion)/",
 
         [string]
         $Destination = "D:\"
@@ -73,7 +73,7 @@ function ASDKDownloader
 
     Write-Verbose -Message "Downloading ASDK_$asdkVersion" -Verbose
     
-    $AsdkFileList | ForEach-Object {Start-BitsTransfer -Source $_ -DisplayName $_ -Destination $Destination}      
+    $AsdkFileList | ForEach-Object {Start-BitsTransfer -Source ($asdkURIRoot + $asdkVersion + '/' + $_) -DisplayName $_ -Destination $Destination}      
 }
 
 function extractASDK ($File, $Destination)
