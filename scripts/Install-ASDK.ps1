@@ -112,16 +112,8 @@ else
 
         if (!(Test-Path -Path $vhdxFullPath))
         {
-            if ($null -eq $version -or $Version -eq "")
-            {
-                Write-Log @writeLogParams -Message "No version info available switching to interactive mode"
-                $asdkFiles = ASDKDownloader -Interactive -Destination $asdkDownloadPath
-            }
-            else
-            {
-                Write-Log @writeLogParams -Message "version explicitly specified $version"
-                $asdkFiles = ASDKDownloader -Version $Version -Destination $asdkDownloadPath
-            }
+            $asdkFiles = ASDKDownloader -Destination $asdkDownloadPath
+
             Write-Log @writeLogParams -Message "$asdkFiles"
 
             #Extracting Azure Stack Development kit files
