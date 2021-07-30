@@ -252,6 +252,7 @@
 
 # Install nuget
 
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Install-PackageProvider nuget -Force 
 
 
