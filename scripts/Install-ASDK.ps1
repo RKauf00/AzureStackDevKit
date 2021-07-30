@@ -91,6 +91,7 @@ $writeLogParams = @{
 $asdkDownloadPath = "d:\"
 $asdkExtractFolder = "Azure Stack Development Kit"
 $d = Join-Path -Path $asdkDownloadPath -ChildPath $asdkExtractFolder
+#if (!(Test-Path $d)) { New-Item -Path $d -ItemType Directory }
 $vhdxFullPath = Join-Path -Path $d -ChildPath "cloudbuilder.vhdx"
 
 if (Test-Path "C:\CloudDeployment\Configuration\Version\Version.xml")
@@ -113,6 +114,7 @@ else
         if (!(Test-Path -Path $vhdxFullPath))
         {
             $asdkFiles = ASDKDownloader -Destination $asdkDownloadPath
+            $asdkFiles = Get-Item -Path $("D:\*AzureStackDevelopmentKit*")
 
             Write-Log @writeLogParams -Message "$asdkFiles"
 
@@ -121,8 +123,9 @@ else
             Write-Log @writeLogParams -Message "Extracting Azure Stack Development kit files;"
             Write-Log @writeLogParams -Message "to $d"
             
-            $f = Join-Path -Path $asdkDownloadPath -ChildPath $asdkFiles[0].Split("/")[-1]
-            ExtractASDK -File $f -Destination $d
+            #$f = Join-Path -Path $asdkDownloadPath -ChildPath ($asdkFiles[0] -Split ("/"))[-1]
+            #ExtractASDK -File $f -Destination $d
+            ExtractASDK -File (($asdkFiles | Where {$_ -Like "*.exe*"}) -Split ("/"))[-1] -Destination $d
         }
 
         Write-Log @writeLogParams -Message "About to Start Copying ASDK files to C:\"
