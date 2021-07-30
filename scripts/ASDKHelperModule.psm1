@@ -73,7 +73,9 @@ function ASDKDownloader
 
     Write-Verbose -Message "Downloading ASDK_$asdkVersion" -Verbose
     
-    $AsdkFileList | ForEach-Object {Start-BitsTransfer -Source ($asdkURIRoot + $asdkVersion + '/' + $_) -DisplayName $_ -Destination $Destination}      
+    $AsdkFileList | ForEach-Object {Start-BitsTransfer -Source ($asdkURIRoot + $asdkVersion + '/' + $_) -DisplayName $_ -Destination $Destination}
+    $downloadedFiles = Get-Item -Path $Destination | Where {$_ -Like "*$($asdkURIRoot + $asdkVersion)*"}
+    $downloadedFiles
 }
 
 function extractASDK ($File, $Destination)
