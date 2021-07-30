@@ -158,6 +158,7 @@ if ($SkipWorkaround -eq $false)
 {   
     $outFile = "C:\tools\nuget.exe"
     Rename-Item -Path $outFile -NewName "nuget_old.exe" -Verbose
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Invoke-WebRequest -Uri "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" -OutFile $outFile -Verbose
     Unblock-File -Path $outFile -Confirm:$false -Verbose
 }
